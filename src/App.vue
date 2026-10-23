@@ -13,7 +13,9 @@
         </router-link>
       </li>
       <li>
-        <a href="/love" class="text-white hover:text-blue-300 transition">我的喜欢</a>
+        <router-link to="/love" class="text-white hover:text-blue-300 transition">
+          我的喜欢
+        </router-link>
       </li>
     </ul>
   </div>
@@ -28,4 +30,5 @@
 <script setup>
 // 播放栏只在这里引入一次，跨路由保持挂载
 import PlayerBar from './components/PlayerBar.vue'
+import router from './router/index.js';
 </script>

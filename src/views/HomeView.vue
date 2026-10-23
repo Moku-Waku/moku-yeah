@@ -1,7 +1,7 @@
 <template>
     <!-- 背景图 -->
     <div class="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat blur-[2px]"
-         style="background-image: url('/img/Touhou-.webp');">
+         :style="{ backgroundImage: `url(${baseUrl}img/Touhou-.webp)` }">
     </div>
 
     <!-- 主体部分（滚动的容器） -->
@@ -39,6 +39,9 @@
 <script setup>
 import { ref } from 'vue'
 
+// 基础路径：本地是 '/moku-yeah/'，部署后也是 '/moku-yeah/'
+const baseUrl = import.meta.env.BASE_URL
+
 
 // 👇 提取数据，定义响应式数组 👇
 const songs = ref([
@@ -47,61 +50,61 @@ const songs = ref([
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
         // 注意：路径以 / 开头，请确保图片存放在 public/Album_Cover/ 下
-        cover: '/Album_Cover/63／64 Completion.jpg' 
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg` 
     },
     {
         id: 2,
         name: 'Adios, Illusion de los Companeros ～さよなら友の幻よ',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
     {
         id: 3,
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
     {
         id: 4,
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
     {
         id: 5,
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
     {
         id: 6,
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
         {
         id: 7,
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
         {
         id: 8,
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
         {
         id: 9,
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
         {
         id: 10,
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
-        cover: '/Album_Cover/63／64 Completion.jpg'
+        cover: `${baseUrl}Album_Cover/63_64 Completion.jpg`
     },
 ])
 </script>
