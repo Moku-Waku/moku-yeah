@@ -1,66 +1,107 @@
 <template>
     <!-- 背景图 -->
     <div class="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat blur-[2px]"
-         style="background-image: url('img/Touhou-.webp');"></div>
-
-    <!-- 导航栏 -->
-    <div class="w-full max-w-full h-16 rounded-b-lg opacity-75 bg-[#dbe8f644] font-japen-cute flex items-center">
-        <ul class="flex w-full gap-6 list-none justify-center text-3xl">
-            <li><a href="index.html" class="text-white hover:text-blue-300 transition">开始</a></li>
-            <li><a href="Playlist_page/songlist.html" class="text-white hover:text-blue-300 transition">歌单</a></li>
-            <li><a href="#" class="text-white hover:text-blue-300 transition">我的喜欢</a></li>
-        </ul>
+         style="background-image: url('/img/Touhou-.webp');">
     </div>
 
     <!-- 主体部分（滚动的容器） -->
-    <div class="bg-[#dbe8f644] w-[80vw] h-[calc(100vh-5rem)] mx-auto mt-4 rounded-md overflow-y-auto p-4 scrollbar-none">
+    <div class="bg-[#dbe8f644] w-[80vw] h-[calc(100vh-11rem)] mx-auto mt-4 rounded-md overflow-y-auto p-4 scrollbar-none">
 
         <!--  核心改动：网格布局，自适应一行放几个  -->
         <!-- 手机2列，平板3列，中等屏幕4列，大屏幕5列，gap-4控制卡片间距 -->
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-items-center">
 
-            <!-- 卡片 1 -->
-            <div class="song-card text-center w-full bg-white/30 rounded-lg p-2 flex flex-col cursor-pointer group">
-                <img src="Album_Cover/63／64 Completion.jpg" class="w-full aspect-square object-cover rounded-md shadow-md" alt="专辑图片">
-                <!-- 第一行：加 mt-2 间距，truncate 单行截断 -->
-                <p  id="singer_name" class="font-japen-bit text-[10px] w-full truncate mt-2 group-hover:text-blue-500">ジャージと愉快な仲間たち</p>
-                <!-- 第二行：line-clamp-2 最多两行截断 -->
-                <p id="song_name" class="font-japen-bit text-[15px] w-full line-clamp-2 text-[#373838] group-hover:text-blue-400">Fiesta de la Luna ～魔法少女達の百年祭</p>
+            <!-- 👇 核心改动：使用 v-for 循环渲染，删除了原本 5 个写死的卡片 👇 -->
+            <div 
+                v-for="song in songs" 
+                :key="song.id" 
+                class="song-card text-center w-full bg-white/30 rounded-lg p-2 flex flex-col cursor-pointer group"
+            >
+                <!-- 注意：src 前面加了冒号，绑定 song.cover 变量 -->
+                <img :src="song.cover" class="w-full aspect-square object-cover rounded-md shadow-md" alt="专辑图片">
+                
+                <!-- 删除了重复的 id，直接用双大括号渲染数据 -->
+                <p class="font-japen-bit text-[10px] w-full truncate mt-2 group-hover:text-blue-500">
+                    {{ song.singer }}
+                </p>
+                
+                <p class="font-japen-bit text-[15px] w-full line-clamp-2 text-[#373838] group-hover:text-blue-400">
+                    {{ song.name }}
+                </p>
             </div>
+            <!-- 👆 循环结束 👆 -->
 
-            <!-- 卡片 2 -->
-            <div class="song-card text-center w-full bg-white/30 rounded-lg p-2 flex flex-col cursor-pointer group">
-                <img src="Album_Cover/63／64 Completion.jpg" class="w-full aspect-square object-cover rounded-md shadow-md" alt="专辑图片">
-                <p id="singer_name" class="font-japen-bit text-[10px] w-full truncate mt-2 group-hover:text-blue-500">ジャージと愉快な仲間たち</p>
-                <p id="song_name" class="font-japen-bit text-[15px] w-full line-clamp-2 text-[#373838] group-hover:text-blue-400">Adios, Illusion de los Companeros ～さよなら友の幻よ</p>
-            </div>
-
-            <!-- 卡片 3 -->
-            <div class="song-card text-center w-full bg-white/30 rounded-lg p-2 flex flex-col cursor-pointer group">
-                <img src="Album_Cover/63／64 Completion.jpg" class="w-full aspect-square object-cover rounded-md shadow-md" alt="专辑图片">
-                <p id="singer_name" class="font-japen-bit text-[10px] w-full truncate mt-2 group-hover:text-blue-500">ジャージと愉快な仲間たち</p>
-                <p id="song_name" class="font-japen-bit text-[15px] w-full line-clamp-2 text-[#373838] group-hover:text-blue-400">Fiesta de la Luna ～魔法少女達の百年祭</p>
-            </div>
-
-            <!-- 卡片 4 -->
-            <div class="song-card text-center w-full bg-white/30 rounded-lg p-2 flex flex-col cursor-pointer group">
-                <img src="Album_Cover/63／64 Completion.jpg" class="w-full aspect-square object-cover rounded-md shadow-md" alt="专辑图片">
-                <p id="singer_name" class="font-japen-bit text-[10px] w-full truncate mt-2 group-hover:text-blue-500">ジャージと愉快な仲間たち</p>
-                <p id="song_name" class="font-japen-bit text-[15px] w-full line-clamp-2 text-[#373838] group-hover:text-blue-400">Fiesta de la Luna ～魔法少女達の百年祭</p>
-            </div>
-
-            <!-- 卡片 5 -->
-            <div class="song-card text-center w-full bg-white/30 rounded-lg p-2 flex flex-col cursor-pointer group">
-                <img src="Album_Cover/63／64 Completion.jpg" class="w-full aspect-square object-cover rounded-md shadow-md" alt="专辑图片">
-                <p id="singer_name" class="font-japen-bit text-[10px] w-full truncate mt-2 group-hover:text-blue-500">ジャージと愉快な仲間たち</p>
-                <p id="song_name" class="font-japen-bit text-[15px] w-full line-clamp-2 text-[#373838] group-hover:text-blue-400">Fiesta de la Luna ～魔法少女達の百年祭</p>
-            </div>
 
         </div>
     </div>
-    <PlayerBar/>
 </template>
 
 <script setup>
-import PlayerBar from '../components/PlayerBar.vue';
+import { ref } from 'vue'
+
+
+// 👇 提取数据，定义响应式数组 👇
+const songs = ref([
+    {
+        id: 1,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        // 注意：路径以 / 开头，请确保图片存放在 public/Album_Cover/ 下
+        cover: '/Album_Cover/63／64 Completion.jpg' 
+    },
+    {
+        id: 2,
+        name: 'Adios, Illusion de los Companeros ～さよなら友の幻よ',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+    {
+        id: 3,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+    {
+        id: 4,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+    {
+        id: 5,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+    {
+        id: 6,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+        {
+        id: 7,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+        {
+        id: 8,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+        {
+        id: 9,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+        {
+        id: 10,
+        name: 'Fiesta de la Luna ～魔法少女達の百年祭',
+        singer: 'ジャージと愉快な仲間たち',
+        cover: '/Album_Cover/63／64 Completion.jpg'
+    },
+])
 </script>

@@ -9,12 +9,5 @@ export default defineConfig({
     vue({ template: { transformAssetUrls: { tags: {} } } }),
     tailwindcss(),
   ],
-  build: {
-    rollupOptions: {
-      input: {
-        index: 'index.html',
-        songlist: 'Playlist_page/songlist.html',
-      },
-    },
-  },
+  base: '/moku-yeah/',
 })
