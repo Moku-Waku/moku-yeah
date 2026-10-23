@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@source "../../**/*.{vue,html}";
+/* 字体 */
+@font-face {
+  font-family: "japen-bit";
+  src: url("/front/ZLabsRoundPix_12px_M_CN.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "japen-cute";
+  src: url("/front/MarukoGothicCJKjp-Medium.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+/* 主题 */
+@theme{
+    --font-japen-bit:"japen-bit", sans-serif;
+    --font-japen-cute:"japen-cute", sans-serif;
+}

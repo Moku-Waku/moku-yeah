@@ -1,0 +1,23 @@
+<script setup lang="ts">
+import PlayerBar from '../components/PlayerBar.vue';
+</script>
+
+<template>
+    <!-- 背景图 -->
+    <div class="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat blur-[2px]"
+style="background-image: url('/img/Touhou.webp');"></div>
+    <!-- 导航栏 -->
+    <div class="w-full max-w-full h-16 rounded-b-lg opacity-75 bg-[#dbe8f644] font-japen-cute flex items-center">
+        <ul class="flex  w-full gap-6 list-none justify-center text-3xl">
+            <li><a href="../index.html" class="text-white hover:text-blue-300 transition">开始</a></li>
+            <li><a href="songlist.html" class="text-white hover:text-blue-300 transition">歌单</a></li>
+            <li><a href="#" class="text-white hover:text-blue-300 transition">我的喜欢</a></li>
+        </ul>
+    </div>
+     <!-- 主体部分 -->
+    <div class="bg-[#dbe8f644] w-[80vw] h-[calc(100vh-5rem)] mx-auto mt-4 rounded-md overflow-y-auto p-4 scrollbar-none">
+
+    </div>
+    <PlayerBar/>
+</template>
+
