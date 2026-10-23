@@ -4,9 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
   plugins: [
-    // 不转换模板里的资源地址：原页面写的是相对路径（img/...、../icon/...），
-    // 静态资源按原层级放在 public/ 下，由浏览器按文档地址解析，链接与源站一致。
-    vue({ template: { transformAssetUrls: { tags: {} } } }),
+    vue(), // 恢复默认写法，让 Vite 正常工作
     tailwindcss(),
   ],
   base: '/moku-yeah/',
