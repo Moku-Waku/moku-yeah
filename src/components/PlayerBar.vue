@@ -12,21 +12,42 @@
         </div>
         <!-- 小型歌词显示 -->
          <div class="flex-1 min-w-0 flex flex-col justify-center text-white text-[20px] text-center px-4">
-            <p class="truncate text-center">纯音乐，请欣赏</p>
+            <p class="truncate text-center text-sm">纯音乐，请欣赏</p>
          </div>
         <!-- 播放按钮组件 -->
         <div class="flex items-center gap-4 ml-auto flex-shrink-0 mr-2">
-            <img :src="`${baseUrl}/icon/caret-left-filled.png`" class="w-7 h-7 object-contain cursor-pointer hover:scale-110 transition" alt="上一首">
-            <img  id="play_song" :src="`${baseUrl}/icon/play.png`" class="w-10 h-10 object-contain cursor-pointer hover:scale-110 transition" alt="播放">
-            <img  id="pause_song" :src="`${baseUrl}/icon/pause.png`" class="w-10 h-10 object-contain cursor-pointer hover:scale-110 transition hidden" alt="暂停">
-            <img :src="`${baseUrl}/icon/caret-right-filled.png`" class="w-7 h-7 object-contain cursor-pointer hover:scale-110 transition" alt="下一首">
+            <img :src="`${baseUrl}icon/caret-left-filled.png`" class="w-7 h-7 object-contain cursor-pointer hover:scale-110 transition" alt="上一首">
+            <img v-if="!isPlaying" @click="togglePlay" :src="`${baseUrl}icon/play.png`" class="w-10 h-10 object-contain cursor-pointer hover:scale-110 transition" alt="播放">
+            <img v-else @click="togglePlay" :src="`${baseUrl}icon/pause.png`" class="w-10 h-10 object-contain cursor-pointer hover:scale-110 transition" alt="暂停">
+            <img :src="`${baseUrl}icon/caret-right-filled.png`" class="w-7 h-7 object-contain cursor-pointer hover:scale-110 transition" alt="下一首">
         </div>
      </div>
     <!-- 隐藏的音频播放器，放在 <body> 结束标签前 -->
-    <audio id="my-audio"></audio>
+   <audio ref="audioRef" :src="audioSrc" @play="isPlaying = true" @pause="isPlaying = false"></audio>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
 const baseUrl = import.meta.env.BASE_URL
-// 这里暂时留空，等你以后写播放逻辑
+
+// 音频源（暂时写死第一首，等做 props 时再换成动态的）
+const audioSrc = `${baseUrl}audio/ジャージと愉快な仲間たち - Fiesta de la Luna ～魔法少女達の百年祭.mp3`
+
+// 拿到 <audio> 这个 DOM 元素
+const audioRef = ref(null)
+
+// 当前是否正在播放
+const isPlaying = ref(false)
+
+function togglePlay() {
+  const audio = audioRef.value
+  if (!audio) return
+
+  if (isPlaying.value) {
+    audio.pause()
+  } else {
+    audio.play()
+  }
+}
 </script>

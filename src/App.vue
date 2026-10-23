@@ -1,6 +1,6 @@
 <template>
   <!-- 导航栏：放在 router-view 之外，切换路由不重新加载 -->
-  <div class="w-full max-w-full h-16 rounded-b-lg opacity-75 bg-[#c4dae661] font-japen-cute flex items-center">
+  <div class="w-full max-w-full h-16 rounded-b-lg opacity-75 bg-[#dbe8f644] font-japen-cute flex items-center">
     <ul class="flex w-full gap-6 list-none justify-center text-3xl">
       <li>
         <router-link to="/" class="text-white hover:text-blue-300 transition">
@@ -30,5 +30,4 @@
 <script setup>
 // 播放栏只在这里引入一次，跨路由保持挂载
 import PlayerBar from './components/PlayerBar.vue'
-import router from './router/index.js';
 </script>

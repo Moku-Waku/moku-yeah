@@ -38,7 +38,6 @@
 
 <script setup>
 import { ref } from 'vue'
-
 // 基础路径：本地是 '/moku-yeah/'，部署后也是 '/moku-yeah/'
 const baseUrl = import.meta.env.BASE_URL
 
@@ -50,13 +49,14 @@ const songs = ref([
         name: 'Fiesta de la Luna ～魔法少女達の百年祭',
         singer: 'ジャージと愉快な仲間たち',
         // 注意：路径以 / 开头，请确保图片存放在 public/Album_Cover/ 下
-        cover: `${baseUrl}Album_Cover/63_64_Completion.jpg` 
+        cover: `${baseUrl}Album_Cover/63_64_Completion.jpg` ,
+        audio: `${baseUrl}audio/ジャージと愉快な仲間たち - Fiesta de la Luna ～魔法少女達の百年祭.mp3`
     },
     {
         id: 2,
-        name: 'Adios, Illusion de los Companeros ～さよなら友の幻よ',
+        name: 'イタズラものたちの行進',
         singer: 'ジャージと愉快な仲間たち',
-        cover: `${baseUrl}Album_Cover/63_64_Completion.jpg`
+        cover: `${baseUrl}Album_Cover/Tierra- Piedra-Cielo-y-Hombre土と石と空と人.jpg`
     },
     {
         id: 3,
@@ -107,4 +107,5 @@ const songs = ref([
         cover: `${baseUrl}Album_Cover/63_64_Completion.jpg`
     },
 ])
+
 </script>

@@ -1,5 +1,3 @@
-<script setup lang="ts">
-</script>
 
 <template>
     <!-- 背景图 -->
